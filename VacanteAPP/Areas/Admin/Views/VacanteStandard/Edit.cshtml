@@ -1,0 +1,84 @@
+﻿@model VacanteAPP.Models.ViewModels.VacanteStandardVM
+    <partial name="_Notificare" />
+    <form method="post" enctype="multipart/form-data">
+        <input asp-for="vacanteStandard.VacantaId" hidden />
+        <div asp-validation-summary="All"></div>
+        <div class="row">
+            <div class="col-2">
+                <img src="@Model.vacanteStandard.URL" width="100%" style="border-radius:5px" />
+
+            </div>
+            <div ="col-10">
+            </div>
+            <div class="form-group">
+                <label asp-for="vacanteStandard.NameLastMinute" class="form-label mt-4">Nume Vacanta</label>
+                <input asp-for="vacanteStandard.NameLastMinute" type="text" class="form-control" id="categoryName" placeholder="Introduceți numele vacantei">
+            </div>
+            <div class="form-group">
+                <label asp-for="vacanteStandard.DisplayOrder" class="form-label mt-4"></label>
+                <select asp-for="vacanteStandard.DisplayOrder" class="form-select" id="displayOrder">
+                    @for (int i = 1; i < 50; i++)
+                    {
+                        <option>@i</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="vacanteStandard.LastMinuteDate" class="form-label mt-4">Nume Vacanta</label>
+                <input asp-for="vacanteStandard.LastMinuteDate" type="date" class="form-control" placeholder="Introduceți data" asp-format="{0:yyyy-MM-dd}">
+            </div>
+
+            <div class="form-group">
+                <label asp-for="vacanteStandard.Oras" class="form-label mt-4">Oras</label>
+                <input asp-for="vacanteStandard.Oras" type="text" class="form-control" placeholder="Introduceți Orasul">
+            </div>
+            <div class="form-group">
+                <label asp-for="vacanteStandard.Pret" class="form-label mt-4">Pret vacanta</label>
+                <input asp-for="vacanteStandard.Pret" type="text" class="form-control" placeholder="Introduceți pret">
+            </div>
+            <div class="form-group">
+                <label asp-for="vacanteStandard.Descriere" class="form-label mt-4">Descriere vacanta</label>
+                <textarea asp-for="@Model.vacanteStandard.Descriere" type="text" class="form-control" placeholder="Introduceți descrierea"></textarea>
+            </div>
+            <div class="form-group">
+                <label asp-for="vacanteStandard.URL" class="form-label mt-4">URL Imagine</label>
+                <input type="file" name="URL" class="form-control" placeholder="Introduceți URL Imagine">
+            </div>
+
+            @if (!string.IsNullOrEmpty(Model.vacanteStandard.URL))
+            {
+                <p>Selected file: @Model.vacanteStandard.URL</p>
+            }
+
+
+            <div class="form-group">
+                <label asp-for="vacanteStandard.CountryId" class="form-label mt-4">Tara</label>
+                <select asp-for="@Model.vacanteStandard.CountryId" asp-items="@Model.listaOrase" class="form-select" id="displayOrder">
+                    <option disabled-selected> Selecteaza tara </option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-4">Trimite</button>
+            <button type="button" class="btn btn-light mt-4"><a class="text-dark" asp-controller="LastMinute" asp-action="Index">Inapoi la Vacante</a></button>
+    </form>
+
+
+
+    </div>
+    </div>
+    @section Scripts {
+        @{
+            <script>tinymce.init({
+                    selector: 'textarea',
+                    plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
+                    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+                    tinycomments_mode: 'embedded',
+                    tinycomments_author: 'Author name',
+                    mergetags_list: [
+                        { value: 'First.Name', title: 'First Name' },
+                        { value: 'Email', title: 'Email' },
+                    ]
+                });</script>
+            <partial name="_ValidationScriptsPartial" />
+        }
+    }

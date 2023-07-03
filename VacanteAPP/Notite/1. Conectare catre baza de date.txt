@@ -1,0 +1,31 @@
+﻿Creați un proiect ASP.NET folosind șablonul adecvat (de exemplu, proiectul web MVC sau API).
+
+În interiorul proiectului, creați un folder numit "Data" pentru a organiza clasele legate de date.
+
+În folderul "Data", creați o clasă numită ApplicationDBContext care se va ocupa de gestionarea interacțiunii cu baza de date.
+
+Asigurați-vă că proiectul include pachetul NuGet Microsoft.EntityFrameworkCore și, dacă este necesar, pachetul Microsoft.EntityFrameworkCore.SqlServer
+sau alt pachet specific furnizorului de baze de date pe care doriți să îl utilizați.
+
+În clasa ApplicationDBContext, moșteniți clasa DbContext și definiți un constructor care primește obiectul
+DbContextOptions<ApplicationDBContext>.
+
+În metoda OnConfiguring a clasei ApplicationDBContext, verificați dacă opțiunile de configurare au fost setate și,
+în caz afirmativ, configurați furnizorul de baze de date și șirul de conexiune.
+
+În fișierul Startup.cs, în metoda ConfigureServices, adăugați codul pentru a înregistra clasa ApplicationDBContext ca serviciu.
+
+Utilizați metoda services.AddDbContext<ApplicationDBContext>(...) pentru a adăuga ApplicationDBContext ca serviciu.
+
+În cadrul metodei AddDbContext, specificați furnizorul de baze de date pe care doriți să îl utilizați (de exemplu, SQL Server) și furnizați
+șirul de conexiune.
+Asigurați-vă că obțineți șirul de conexiune dintr-o sursă de configurare, cum ar fi fișierul appsettings.json, și utilizați metoda
+Configuration.GetConnectionString("NumeConexiune") pentru a recupera șirul de conexiune.
+
+
+După ce ați configurat serviciul, clasa ApplicationDBContext va fi disponibilă pentru injecție de dependențe în alte componente ale
+aplicației, cum ar fi controlerele sau alte clase care necesită interacțiune cu baza de date.
+
+
+Aceasta este o descriere generală a convenției de serviciu într-un proiect ASP.NET cu .NET Core. Vă puteți personaliza configurarea în funcție de necesitățile și preferințele
+dvs. specifice.

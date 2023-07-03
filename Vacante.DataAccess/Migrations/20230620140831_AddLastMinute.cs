@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace VacanteAPP.Migrations
+namespace Vacante.DataAccess.Migrations
 {
     /// <inheritdoc />
     public partial class AddLastMinute : Migration

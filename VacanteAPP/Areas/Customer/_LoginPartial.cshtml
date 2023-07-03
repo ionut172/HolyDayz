@@ -1,0 +1,24 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@inject SignInManager<IdentityUser> _sm
+
+@inject UserManager<IdentityUser> _um
+
+@if (_sm.IsSignedIn(User))
+{
+    <div>
+
+        <span class="text-light">Welcome @User.Identity?.Name</span>
+
+    </div>
+}
+else
+{
+    <div>
+        <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Register">Register</a>
+        |
+        <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Login"> Login </a>
+    </div>
+}

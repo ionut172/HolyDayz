@@ -4,10 +4,11 @@ using VacanteAPP.Models.ViewModels;
 
 namespace Vacante.DataAccess.Repository.IRepository
 {
-    public interface IVacanteStandardRepository : IRepository<VacanteAPP.Models.VacanteStandard>
+    public interface IOrderHeaderRepository : IRepository<VacanteAPP.Models.OrderHeader>
     {
-        void Update(VacanteAPP.Models.VacanteStandard vacanteStandard);
-        void Update(VacanteStandardVM obj);
+        void Update(VacanteAPP.Models.OrderHeader obj);
+        void UpdateStatus(int id, string orderStatus, string? paymentStatus = null);
+        void UpdateStripePaymentId(int id, string sessionId, string? paymentId = null);
     }
 }
 

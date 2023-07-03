@@ -1,0 +1,45 @@
+﻿1. Il folderul Model se realizeaza ViewModels.
+2. Se realizeaza o noua clasa.
+
+3. Se instantiaza sub forma de liste clasele ce vor fi randate.
+
+namespace VacanteAPP.Models.ViewModels
+{
+    public class VacanteStandardVM
+    {
+        public VacanteStandard vacanteStandard { get; set; }
+        [ValidateNever]
+        public IEnumerable<SelectListItem> listaOrase { get; set; }
+        [ValidateNever]
+
+        public Countries Countries { get; set; }
+        public VacanteStandardVM(VacanteStandard v, IEnumerable<SelectListItem> lista)
+        {
+            this.vacanteStandard = v;
+            this.listaOrase = lista;
+        }
+        public VacanteStandardVM()
+        {
+        }
+        
+    }
+}
+**** NOTA: Sa fie adaugat si un al doilea constructor default.
+
+/////
+
+4. Instantiere exemplu:
+
+IEnumerable<SelectListItem> listItems = _unitOfWork.countries.GetAll().Select(u => new SelectListItem
+            {
+                Text = u.CountryName,
+                Value = u.CountryId.ToString()
+            });
+            VacanteStandardVM vacanteStandardVM = new VacanteStandardVM(new VacanteStandard(), listItems);
+
+
+
+
+            return View(vacanteStandardVM);
+
+**** SE RETURNEAZA ViewModel

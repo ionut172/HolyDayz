@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace VacanteAPP
+namespace VacanteAPP.Models
 {
     public class Category
     {

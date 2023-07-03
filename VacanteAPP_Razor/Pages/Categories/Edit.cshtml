@@ -1,0 +1,33 @@
+﻿@page
+@model VacanteAPP_Razor.Pages.Categories.EditModel
+
+@{
+}
+
+
+<form method="post">
+    <div asp-validation-summary="All"></div>
+    <div class="form-group">
+        <label asp-for="CategoryOne.Name" class="form-label mt-4">Nume categorie</label>
+        <input asp-for="CategoryOne.Name" type="text" class="form-control" id="categoryName" placeholder="Introduceți numele categoriei">
+        <span asp-validation-for="CategoryOne.Name" class="text-danger"></span>
+        <span asp-validation-for="CategoryOne.DisplayOrder" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CategoryOne.DisplayOrder" class="form-label mt-4"></label>
+        <select asp-for="CategoryOne.DisplayOrder" class="form-select" id="displayOrder">
+            @for (int i = 1; i < 50; i++)
+            {
+                <option>@i</option>
+            }
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary mt-4">Trimite</button>
+    <button type="button" class="btn btn-light mt-4"><a class="text-dark" asp-page="/Categories/Index">Inapoi la categorii</a></button>
+</form>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

@@ -4,7 +4,7 @@
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace VacanteAPP.Migrations
+namespace Vacante.DataAccess.Migrations
 {
     /// <inheritdoc />
     public partial class PopoulateCategories : Migration

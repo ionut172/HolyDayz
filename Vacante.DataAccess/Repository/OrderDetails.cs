@@ -8,23 +8,55 @@ using VacanteAPP.Models.ViewModels;
 
 namespace Vacante.DataAccess.Repository
 {
-    public class OrderHeader : Repository<VacanteAPP.Models.OrderHeader>, IOrderHeaderRepository
+    public class OrderDetails : Repository<VacanteAPP.Models.OrderDetails>, IDetailsOrderRepository
     {
 
         protected ApplicationDBContext _db;
-        public OrderHeader(ApplicationDBContext db) : base(db)
+        public OrderDetails(ApplicationDBContext db) : base(db)
         {
             this._db = db;
         }
-        public void Update(OrderHeader obj)
+        public void Update(OrderDetails obj)
         {
             _db.Update(obj);
         }
 
-        public void Update(VacanteAPP.Models.OrderHeader shoppingCart)
+        public void Update(VacanteAPP.Models.OrderDetails shoppingCart)
         {
-            _db.orderHeaders.Update(shoppingCart);
+            _db.orderDetails.Update(shoppingCart);
         }
+
+        public void UpdateStatus(int id, string orderStatus, string? paymentStatus = null)
+        {
+            var orderFromDb = _db.orderDetails.FirstOrDefault(u => u.ID == id);
+            if (orderFromDb != null)
+            {
+                orderFromDb.OrderHeader.OrderStatus = orderStatus;
+                if (!string.IsNullOrEmpty(paymentStatus))
+                {
+                    orderFromDb.OrderHeader.PaymentStatus = paymentStatus;
+                    orderFromDb.OrderHeader.OrderStatus = orderStatus;
+                }
+            }
+        }
+
+        public void UpdateStripePaymentId(int id, string sessionId, string? paymentId = null)
+        {
+            var orderFromDb = _db.orderDetails.FirstOrDefault(u => u.ID == id);
+            if (orderFromDb != null)
+            {
+                if (sessionId != null)
+                {
+                    orderFromDb.OrderHeader.SessionId = sessionId;
+                }
+                if (paymentId != null)
+                {
+                    orderFromDb.OrderHeader.PaymentId = paymentId;
+                    orderFromDb.OrderHeader.PaymentDate = DateTime.Now;
+                }
+            }
+        }
+
     }
 }
 

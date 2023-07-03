@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<UserSecretsId>df17fadb-f600-426a-948e-19a7f0bfb186</UserSecretsId>
+	</PropertyGroup>
+	<ItemGroup>
+		<None Remove="Data\" />
+		<None Remove="Migrations\" />
+		<None Remove="Repository\" />
+		<None Remove="Repository\IRepository\" />
+		<None Remove="DbInitializer\" />
+	</ItemGroup>
+	<ItemGroup>
+		<Folder Include="Data\" />
+		<Folder Include="Migrations\" />
+		<Folder Include="Repository\" />
+		<Folder Include="Repository\IRepository\" />
+		<Folder Include="DbInitializer\" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.8">
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.8" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.8" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+		<PackageReference Include="System.Text.Json" Version="7.0.3" />
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
+		<PackageReference Include="System.Windows.Extensions" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.1" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="7.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.2.0" />
+		<PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="7.0.8" />
+		<PackageReference Include="Microsoft.Extensions.Identity.Core" Version="7.0.8" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.8" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.8" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Vacante.Models\VacanteAPP.Models.csproj" />
+	</ItemGroup>
+</Project>

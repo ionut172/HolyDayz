@@ -1,0 +1,65 @@
+﻿@model ShoppingCartVM
+
+<div class="container px-3 my-5 clearfix">
+    <!-- Shopping cart table -->
+    <div class="card">
+        <div class="card-header">
+            <h2>Cosul tau</h2>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered m-0">
+                    <thead>
+                        <tr>
+                            <!-- Set columns width -->
+                            <th class="text-center py-3 px-4" style="min-width: 400px;">Numele vacantelor &amp; Detaiii</th>
+                            <th class="text-right py-3 px-4" style="width: 100px;">Pret</th>
+
+                            <th class="text-right py-3 px-4" style="width: 100px;">Total</th>
+                            <th class="text-center align-middle py-3 px-0" style="width: 40px;"><a href="#" class="shop-tooltip float-none text-light" title="" data-original-title="Clear cart"><i class="ino ion-md-trash"></i></a></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ShoppingCartList)
+                        {
+                            <tr>
+                                <td class="p-4">
+                                    <div class="media align-items-center">
+                                        <img src="@item.Vacanta.URL" class="d-block ui-w-40 ui-bordered mr-4" width="150px" height="auto" alt="">
+                                        <div class="media-body">
+                                            <a href="#" class="d-block text-dark">@item.Vacanta.NameLastMinute</a>
+                                            <div class="description text-muted">
+                                                <p>@Html.Raw(@item.Vacanta.Descriere)</p>
+                                            </div>
+                                            <p></p>
+                                            <small>
+                                                <span class="text-muted">Total produse: </span> @item.Count
+                                            </small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-right font-weight-semibold align-middle p-4">@item.Vacanta.Pret</td>
+                                <td class="text-right font-weight-semibold align-middle p-4">@(@item.Vacanta.Pret * @item.Count)</td>
+                                <td class="text-center align-middle px-0"><a class="shop-tooltip close float-none text-danger" title="" asp-controller="Cart" asp-route-Id="@item.Id" asp-action="Delete" data-original-title="Remove">×</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- / Shopping cart table -->
+
+            <div class="d-flex flex-wrap justify-content-between align-items-center pb-4">
+                <div class="text-right mt-4">
+                    <label class="text-muted font-weight-normal m-0">Total pret comanda</label>
+                    <div class="text-large"><strong>@Model.OrderHeader.OrderTotal</strong></div>
+                </div>
+            </div>
+
+            <div class="float-right">
+                <button asp-area="Customer" asp-controller="Home" asp-action="Details" type="button" class="btn btn-lg btn-default md-btn-flat mt-2 mr-3"><a class="text-dark" asp-area="Customer" asp-controller="Home" asp-action="Index">Back to shopping</a></button>
+                <button asp-action="Summary" type="button" class="btn btn-lg btn-primary mt-2"><a style="color:white;" class="text-light" asp-controller="Cart" asp-action="Summary">Checkout</a></button>
+            </div>
+
+        </div>
+    </div>
+</div>

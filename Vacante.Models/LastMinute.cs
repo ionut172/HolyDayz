@@ -1,10 +1,11 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace VacanteAPP;
+namespace VacanteAPP.Models;
 
 public class LastMinute
 {
+    [Key]
     public int LastMinuteId { get; set; }
 
     [Required]

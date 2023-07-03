@@ -1,0 +1,24 @@
+﻿@model VacanteStandardVM
+
+<div class="container">
+    <div class="row pb-3">
+        @foreach (var vacanta in Model.vacanteStandards)
+        {
+            <div class="col-4 p-2">
+                <div class="card border-0 p-3 shadow border-top border-5 rounded">
+                    <img src="@vacanta.URL" class="card-img-top rounded" style="width: 150px; height:auto; margin: auto; text-align: center" />
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-primary mb-3">@vacanta.NameLastMinute</h5>
+                        <p class="card-text"><strong>Oras:</strong> @vacanta.Oras</p>
+                        <p class="card-text"><strong>Tara:</strong> @vacanta.Countries.CountryName</p>
+                        <p class="card-text"><strong>Data:</strong> @vacanta.LastMinuteDate</p>
+                        <p class="card-text"><strong>Pret:</strong> @vacanta.Pret</p>
+                        <a asp-controller="Home" asp-action="Details" asp-route-VacantaId="@vacanta.VacantaId" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+

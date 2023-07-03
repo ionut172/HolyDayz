@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk.Web">
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(RunConfiguration)' == 'https' " />
+	<PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
+	<ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.8" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.8" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.8">
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+		<PackageReference Include="Json.Net" Version="1.0.33" />
+		<PackageReference Include="NuGet.Commands" Version="6.6.1" />
+		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.7" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.8" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+		<PackageReference Include="Microsoft.Extensions.Identity.Core" Version="7.0.8" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.8" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.8" />
+		<PackageReference Include="Stripe.net" Version="41.21.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="7.0.8" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Remove="Notite\" />
+		<None Remove="Areas\" />
+		<None Remove="Areas\Admin\" />
+		<None Remove="Areas\Admin\Controllers\" />
+		<None Remove="Areas\Admin\Views\" />
+		<None Remove="Areas\Customer\" />
+		<None Remove="Areas\Customer\Controllers\" />
+		<None Remove="Areas\Admin\Views\Category\" />
+		<None Remove="Areas\Admin\Views\LastMinute\" />
+		<None Remove="Areas\Admin\Views\Shared\" />
+		<None Remove="Areas\Admin\Views\VacanteStandard\" />
+		<None Remove="Areas\Admin\Views\Countries\" />
+		<None Remove="Areas\Customer\Views\" />
+		<None Remove="Areas\Customer\Views\Home\" />
+		<None Remove="Areas\Customer\Views\Cart\" />
+		<None Remove="Areas\Admin\Views\Order\" />
+	</ItemGroup>
+	<ItemGroup>
+		<Folder Include="Notite\" />
+		<Folder Include="Areas\" />
+		<Folder Include="Areas\Admin\" />
+		<Folder Include="Areas\Admin\Controllers\" />
+		<Folder Include="Areas\Admin\Views\" />
+		<Folder Include="Areas\Customer\" />
+		<Folder Include="Areas\Customer\Controllers\" />
+		<Folder Include="Areas\Admin\Views\Category\" />
+		<Folder Include="Areas\Admin\Views\LastMinute\" />
+		<Folder Include="Areas\Admin\Views\Shared\" />
+		<Folder Include="Areas\Admin\Views\VacanteStandard\" />
+		<Folder Include="Areas\Admin\Views\Countries\" />
+		<Folder Include="wwwroot\images\" />
+		<Folder Include="wwwroot\images\vacanteStandard\" />
+		<Folder Include="Areas\Customer\Views\" />
+		<Folder Include="Areas\Customer\Views\Home\" />
+		<Folder Include="Areas\Customer\Views\Cart\" />
+		<Folder Include="Areas\Admin\Views\Order\" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Update="Conectare catre baza de date.txt">
+			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</None>
+		<None Update="Notite\Conectare catre baza de date.txt">
+			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</None>
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Vacante.DataAccess\Vacante.DataAccess.csproj">
+			<GlobalPropertiesToRemove>
+			</GlobalPropertiesToRemove>
+		</ProjectReference>
+		<ProjectReference Include="..\Vacante.Utility\Vacante.Utility.csproj">
+			<GlobalPropertiesToRemove>
+			</GlobalPropertiesToRemove>
+		</ProjectReference>
+		<ProjectReference Include="..\Vacante.Models\VacanteAPP.Models.csproj">
+			<GlobalPropertiesToRemove>
+			</GlobalPropertiesToRemove>
+		</ProjectReference>
+	</ItemGroup>
+	<ItemGroup>
+		<Content Remove="wwwroot\images\" />
+		<Content Remove="wwwroot\images\vacanteStandard\" />
+	</ItemGroup>
+</Project>

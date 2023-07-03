@@ -1,0 +1,28 @@
+﻿@model VacanteAPP.Models.VacanteStandard
+    <partial name="_Notificare" />
+    <form method="post">
+        <input asp-for="VacantaId" hidden />
+        <div class="p-3 mt-4">
+            <div class="row pb-2">
+                <h2 class="text-primary">
+                    Delete Vacanta Last Minute?
+                </h2>
+            </div>
+        </div>
+
+        <div asp-validation-summary="All"></div>
+        <div class="form-group">
+            <label asp-for="NameLastMinute" class="form-label mt-4">Nume vacantei</label>
+            <input asp-for="NameLastMinute" type="text" class="form-control">
+            <span asp-validation-for="NameLastMinute" class="text-danger"></span>
+            <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary mt-4">Sterge</button>
+        <button type="button" class="btn btn-light mt-4"><a class="text-dark" asp-controller="LastMinute" asp-action="Index">Inapoi la Vacante</a></button>
+    </form>
+
+    @section Scripts {
+        @{
+            <partial name="_ValidationScriptsPartial" />
+        }
+    }

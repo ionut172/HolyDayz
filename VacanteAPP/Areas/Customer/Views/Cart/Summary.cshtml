@@ -1,0 +1,69 @@
+﻿@model ShoppingCartVM
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Shipping Information</h3>
+            <form method="post">
+                <div class="form-group">
+                    <label asp-for="OrderHeader.Name">Nume</label>
+                    <input asp-for="OrderHeader.Name" type="text" class="form-control" id="name" placeholder="Enter your name" value="@Model.OrderHeader.Name">
+                </div>
+                <div class="form-group">
+                    <label asp-for="OrderHeader.Telefon">Telefon</label>
+                    <input asp-for="OrderHeader.Telefon" type="text" class="form-control" id="phone" placeholder="Enter your phone number" value="@Model.OrderHeader.Telefon">
+                </div>
+                <div class="form-group">
+                    <label asp-for="OrderHeader.Adresa" for="address">Adresa livrare</label>
+                    <input asp-for="OrderHeader.Adresa" type="text" class="form-control" id="address" placeholder="Enter your street address" value="@Model.OrderHeader.Adresa">
+                </div>
+                <div class="form-group">
+                    <label asp-for="OrderHeader.City">Oras</label>
+                    <input asp-for="OrderHeader.City" type="text" class="form-control" id="city" placeholder="Enter your city" value="@Model.OrderHeader.City">
+                </div>
+                <div class="form-group">
+                    <label asp-for="OrderHeader.State" for="country">Tara</label>
+                    <input asp-for="OrderHeader.State" type="text" class="form-control" id="country" placeholder="Enter your country" value="@Model.OrderHeader.State">
+                </div>
+                <div class="form-group">
+                    <label asp-for="OrderHeader.CodPostal" for="postal-code">Cod Postal</label>
+                    <input asp-for="OrderHeader.CodPostal" type="text" class="form-control" id="postal-code" placeholder="Enter your postal code" value="@Model.OrderHeader.CodPostal">
+                </div>
+                <button type="submit" class="btn btn-primary mt-4">Submit</button>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <h3>Order Summary</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Pret</th>
+                        <th>Bucati</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.ShoppingCartList)
+                    {
+                        <tr>
+                            <td>@item.Vacanta.NameLastMinute</td>
+                            <td>@item.Vacanta.Pret</td>
+                            <td>@item.Count</td>
+                        </tr>
+                    }
+
+
+                    <!-- Add more product rows here -->
+                </tbody>
+            </table>
+            <div class="text-right mt-4">
+                <label class="text-muted font-weight-normal m-0">Total pret comanda</label>
+                <div class="text-large"><strong>@Model.OrderHeader.OrderTotal</strong></div>
+            </div>
+            <div class="text-right mt-4">
+                <label class="text-muted font-weight-normal m-0">Estimare comanda</label>
+                <div class="text-large"><strong>@DateTime.Now.AddDays(7).ToShortDateString() - @DateTime.Now.AddDays(14).ToShortDateString()</strong></div>
+            </div>
+        </div>
+    </div>
+</div>

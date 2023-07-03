@@ -1,0 +1,41 @@
+﻿@model List<VacanteAPP.Models.Countries>
+<partial name="_Notificare" />
+<div class="containter">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2>Lista de categorii</h2>
+        </div>
+        <div class="col-6">
+            <button type="button" class="btn btn-primary"> <a asp-controller="Countries" asp-action="Create" class="text-light">Realizeaza o noua tara </a></button>
+        </div>
+    </div>
+
+
+    <table class="table table-bordered table-striped">
+        <thead>
+
+
+            <tr>
+                <th>Nume Tara</th>
+
+                <th>Actiuni</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model.OrderBy(u => u.CountryId))
+            {
+
+                <tr>
+                    <td>@obj.CountryName</td>
+
+                    <td>
+                        <button type="button" class="btn btn-danger"> <a asp-controller="Countries" asp-route-CountryId="@obj.CountryId" asp-action="Delete" class="text-light">Sterge</a></button>
+                        <button type="button" class="btn btn-secondary"> <a asp-controller="Countries" asp-route-CountryId="@obj.CountryId" asp-action="Edit" class="text-light">Editeaza</a></button>
+                    </td>
+
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>

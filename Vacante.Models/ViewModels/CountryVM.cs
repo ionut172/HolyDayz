@@ -1,7 +1,7 @@
 ﻿using System;
 using VacanteAPP.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
-namespace Vacante.DataAccess.ViewModels
+namespace VacanteAPP.Models.ViewModels
 {
     public class CountryVM
     {

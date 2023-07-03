@@ -1,0 +1,14 @@
+﻿
+dotnet tool install --global dotnet-ef
+
+export PATH="$PATH:/Users/'your user folder'/.dotnet/tools"
+
+dotnet restore
+
+dotnet ef
+
+dotnet ef migrations add initial
+
+dotnet ef database update
+
+STRING DE CONECTARE:"Server=localhost;Database=Vacante;User Id =sa; Password=Plesescu1;TrustServerCertificate=True"

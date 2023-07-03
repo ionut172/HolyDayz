@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace VacanteAPP.Migrations
+namespace Vacante.DataAccess.Migrations
 {
     /// <inheritdoc />
     public partial class AddCategoryTable : Migration

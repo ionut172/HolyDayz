@@ -1,0 +1,18 @@
+﻿@model VacanteAPP.Models.Countries
+<form method="post">
+    <div asp-validation-summary="All"></div>
+    <div class="form-group">
+        <label asp-for="CountryName" class="form-label mt-4">Nume Tara</label>
+        <input asp-for="CountryName" type="text" class="form-control" id="categoryName" placeholder="Introduceți numele categoriei">
+        <span asp-validation-for="CountryName" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-4">Trimite</button>
+    <button type="button" class="btn btn-light mt-4"><a class="text-dark" asp-controller="Countries" asp-action="Index">Inapoi la tari</a></button>
+</form>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

@@ -8,24 +8,15 @@ using VacanteAPP.Models.ViewModels;
 
 namespace Vacante.DataAccess.Repository
 {
-    public class VacanteStandard : Repository<VacanteAPP.Models.VacanteStandard>, IVacanteStandardRepository
+    public class ApplicationUser : Repository<VacanteAPP.Models.ApplicationUser>, IApplicationUserRepository
     {
 
         protected ApplicationDBContext _db;
-        public VacanteStandard(ApplicationDBContext db) : base(db)
+        public ApplicationUser(ApplicationDBContext db) : base(db)
         {
             this._db = db;
         }
-        public void Update(VacanteAPP.Models.VacanteStandard vacanteStandard)
-        {
-            _db.Update(vacanteStandard);
-        }
 
-        public void Update(VacanteStandardVM obj)
-        {
-            _db.Update(obj.vacanteStandard);
-
-        }
     }
 }
 

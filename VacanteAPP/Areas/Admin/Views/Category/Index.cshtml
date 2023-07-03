@@ -1,41 +1,41 @@
-﻿@model List<Category>
-    <partial name="_Notificare" />
-    <div class="containter">
-        <div class="row pt-4">
-            <div class="col-6">
-                <h2>Lista de categorii</h2>
-            </div>
-            <div class="col-6">
-                <button type="button" class="btn btn-primary"> <a asp-controller="Category" asp-action="Create" class="text-light">Realizeaza o noua categorie </a></button>
-            </div>
+﻿@model List<VacanteAPP.Models.Category>
+<partial name="_Notificare" />
+<div class="containter">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2>Lista de categorii</h2>
         </div>
+        <div class="col-6">
+            <button type="button" class="btn btn-primary"> <a asp-controller="Category" asp-action="Create" class="text-light">Realizeaza o noua categorie </a></button>
+        </div>
+    </div>
 
 
-        <table class="table table-bordered table-striped">
-            <thead>
+    <table class="table table-bordered table-striped">
+        <thead>
 
+
+            <tr>
+                <th>Category Name</th>
+                <th>Display Order</th>
+                <th>Actiuni</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model.OrderBy(u => u.DisplayOrder))
+            {
 
                 <tr>
-                    <th>Category Name</th>
-                    <th>Display Order</th>
-                    <th>Actiuni</th>
+                    <td>@obj.Name</td>
+                    <td>@obj.DisplayOrder</td>
+                    <td>
+                        <button type="button" class="btn btn-danger"> <a asp-controller="Category" asp-route-CategoryId="@obj.CategoryId" asp-action="Delete" class="text-light">Sterge</a></button>
+                        <button type="button" class="btn btn-secondary"> <a asp-controller="Category" asp-route-CategoryId="@obj.CategoryId" asp-action="Edit" class="text-light">Editeaza</a></button>
+                    </td>
+
                 </tr>
-            </thead>
-            <tbody>
-                @foreach (var obj in Model.OrderBy(u => u.DisplayOrder))
-                {
+            }
 
-                    <tr>
-                        <td>@obj.Name</td>
-                        <td>@obj.DisplayOrder</td>
-                        <td>
-                            <button type="button" class="btn btn-danger"> <a asp-controller="Category" asp-route-CategoryId="@obj.CategoryId" asp-action="Delete" class="text-light">Sterge</a></button>
-                            <button type="button" class="btn btn-secondary"> <a asp-controller="Category" asp-route-CategoryId="@obj.CategoryId" asp-action="Edit" class="text-light">Editeaza</a></button>
-                        </td>
-
-                    </tr>
-                }
-
-            </tbody>
-        </table>
-    </div>
+        </tbody>
+    </table>
+</div>

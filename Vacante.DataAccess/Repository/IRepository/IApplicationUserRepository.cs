@@ -3,9 +3,9 @@ using VacanteAPP.Models;
 
 namespace Vacante.DataAccess.Repository.IRepository
 {
-    public interface ICategoryRepository : IRepository<Category>
+    public interface IApplicationUserRepository : IRepository<VacanteAPP.Models.ApplicationUser>
     {
-        void Update(Category category);
+
 
     }
 }

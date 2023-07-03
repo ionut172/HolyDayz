@@ -1,0 +1,67 @@
+﻿1. in appsettings.json se seteaza mereu conexiunea catre DB
+
+//
+"ConnectionStrings": {
+        "DefaultConnection": "Server=localhost;Database=Vacante;User Id =sa;Password=Plesescu1;TrustServerCertificate=True"
+    }
+//
+
+2. Se realizeaza folder de Data + Clasa pentru context
+
+//
+
+using Microsoft.EntityFrameworkCore;
+namespace VacanteAPP.Data
+{
+	public class ApplicationDBContext : DbContext
+	{
+		public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options) :base (options)
+		{
+
+		}
+	}
+}
+
+//
+
+3. Se instantiaza in Program.cs
+//
+builder.Services.AddDbContext<ApplicationDBContext>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+//
+
+4. Pentru a genera o ruta explicatie:
+
+//
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
+//
+
+{controller = Numele controller-ului}/{action= Metoda generata prin Public IActionResult care returneaza DIN CONTROLLER numele metodei
+si in body-ul metodei sa fie implementat View();}
+
+De exemplu
+//
+
+app.MapControllerRoute(
+	name:"default",
+	pattern: "{controller="Categorii"}/{action=Randeaza}";
+	)
+//
+Cum ar trebui sa arate functia in Controller?
+
+//
+	public IActionResult Randeaza(){
+		return View();
+}
+//
+
+
+De unde ia View() datele?
+
+Views/Categorii/Randeaza.cshtml
+
+PE SCURT numele trebuie sa fie la fel pentru Controller NumeController , Nume() functie = Nume.cshtml, altfel eroare sau document GOL
+

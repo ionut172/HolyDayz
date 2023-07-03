@@ -1,0 +1,25 @@
+﻿@model VacanteAPP.Models.ShoppingCart
+
+<form method="post">
+    <div class="container">
+        <input asp-for="VacantaShopId" hidden />
+        <div class="row pb-3">
+            <div class="col-lg-6">
+                <img src="@Model.Vacanta.URL" class="img-fluid" alt="Product Image">
+            </div>
+            <div class="col-lg-6">
+                <h1 class="display-4">@Model.Vacanta.NameLastMinute</h1>
+                <p class="lead">Oras: @Model.Vacanta.Oras</p>
+                <p class="lead">Pret: @Model.Vacanta.Pret</p>
+                <p class="lead">Last Minute Date: @Model.Vacanta.LastMinuteDate</p>
+                <p class="lead">Descriere: @Html.Raw(Model.Vacanta.Descriere)</p>
+                <p class="lead">Tara: @Model.Vacanta.Countries.CountryName</p>
+                <div class="form-group">
+                    <label for="countInput">Count:</label>
+                    <input type="number" id="countInput" class="form-control mb-2" asp-for="Count">
+                </div>
+                <button class="btn btn-primary btn-lg mt-2">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</form>

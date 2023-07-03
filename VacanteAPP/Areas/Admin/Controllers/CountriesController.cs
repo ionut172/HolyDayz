@@ -7,22 +7,25 @@ using VacanteAPP.Models;
 using Vacante.DataAccess.Data;
 using Vacante.DataAccess.Repository;
 using Vacante.DataAccess.Repository.IRepository;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace VacanteAPP.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class VacanteStandardController : Controller
+    [Authorize(Roles = Vacante.Utility.SD.Role_User_Admin)]
+    public class CountriesController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
-        public VacanteStandardController(IUnitOfWork unitOfWork)
+        public CountriesController(IUnitOfWork unitOfWork)
         {
             this._unitOfWork = unitOfWork;
         }
         public IActionResult Index()
         {
-            List<VacanteAPP.Models.VacanteStandard> vacanteStandards = _unitOfWork.VacanteStandard.GetAll().ToList();
-            return View(vacanteStandards);
+            List<VacanteAPP.Models.Countries> countries = (List<Models.Countries>)_unitOfWork.countries.GetAll();
+            return View(countries);
 
         }
 
@@ -33,36 +36,36 @@ namespace VacanteAPP.Areas.Admin.Controllers
 
         }
         [HttpPost, ActionName("Create")]
-        public IActionResult CreatePost(VacanteAPP.Models.VacanteStandard obj)
+        public IActionResult CreatePost(VacanteAPP.Models.Countries obj)
         {
-            _unitOfWork.VacanteStandard.Add(obj);
+            _unitOfWork.countries.Add(obj);
             _unitOfWork.Save();
             return RedirectToAction("Index");
         }
-        public IActionResult Edit(int VacantaId)
+        public IActionResult Edit(int CountryId)
         {
-            VacanteAPP.Models.VacanteStandard vacanta = _unitOfWork.VacanteStandard.Get(u => u.VacantaId == VacantaId);
-            return View(vacanta);
+            VacanteAPP.Models.Countries tara = _unitOfWork.countries.Get(u => u.CountryId == CountryId);
+            return View(tara);
         }
         [HttpPost, ActionName("Edit")]
-        public IActionResult EditPost(VacanteAPP.Models.VacanteStandard obj)
+        public IActionResult EditPost(VacanteAPP.Models.Countries obj)
         {
 
-            _unitOfWork.VacanteStandard.Update(obj);
+            _unitOfWork.countries.Update(obj);
             _unitOfWork.Save();
             return RedirectToAction("Index");
         }
-        public IActionResult Delete(int VacantaId)
+        public IActionResult Delete(int CountryId)
         {
-            VacanteAPP.Models.VacanteStandard obiectSters = _unitOfWork.VacanteStandard.Get(u => u.VacantaId == VacantaId);
+            VacanteAPP.Models.Countries obiectSters = _unitOfWork.countries.Get(u => u.CountryId == CountryId);
             return View(obiectSters);
         }
         [HttpPost, ActionName("Delete")]
-        public IActionResult DeleteVacanta(VacanteAPP.Models.VacanteStandard obj)
+        public IActionResult DeleteVacanta(VacanteAPP.Models.Countries obj)
         {
             if (obj != null)
             {
-                _unitOfWork.VacanteStandard.Remove(obj);
+                _unitOfWork.countries.Remove(obj);
                 _unitOfWork.Save();
                 return RedirectToAction("Index");
             }

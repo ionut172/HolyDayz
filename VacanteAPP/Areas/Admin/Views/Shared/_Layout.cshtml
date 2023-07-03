@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -8,6 +9,8 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/VacanteAPP.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" />
+
 </head>
 <body>
     <header>
@@ -21,26 +24,36 @@
                 <div class="collapse navbar-collapse" id="navbarColor01">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Category" asp-action="Index">Categorii</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="LastMinute" asp-action="Index">Vacante Last Minute</a>
+                            <a class="nav-link text-light" asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
 
+
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="Customer" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                        <!-- Dropdown Button -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-light" asp-area="Admin" asp-controller="Category" asp-action="Index" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Content Management
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                                <a asp-area="Admin" asp-controller="Category" asp-action="Index" class="dropdown-item">Categorii</a>
+                                <a asp-area="Admin" asp-controller="LastMinute" asp-action="Index" class="dropdown-item">Last Minute</a>
+                                <a asp-area="Admin" asp-controller="VacanteStandard" asp-action="Index" class="dropdown-item">Vacante Standard</a>
+                                <a asp-area="Admin" asp-controller="Countries" asp-action="Index" class="dropdown-item">Tari</a>
+                                <a asp-area="Admin" asp-controller="Order" asp-action="IndexUser" class="dropdown-item">Comenzi User</a>
+
+                            </div>
+                        </li>
+                        <!-- End Dropdown Button -->
                     </ul>
-                    <form class="d-flex">
-                        <input class="form-control me-sm-2" type="search" placeholder="Search">
-                        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-                    </form>
+
                 </div>
             </div>
+            @*<partial name="_LoginPartial" />*@
         </nav>
+
     </header>
     <div class="container">
         <main role="main" class="pb-3">
@@ -56,6 +69,9 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://cdn.tiny.cloud/1/l6e3bue7rk7em6cfbp0d7i70luhm6fvbrjjidjtcytru4ge9/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js" asp-append-version="true"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

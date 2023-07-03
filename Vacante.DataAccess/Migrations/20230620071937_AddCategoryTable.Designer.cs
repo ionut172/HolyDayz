@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using VacanteAPP.Data;
+using Vacante.DataAccess.Data;
 
 #nullable disable
 
-namespace VacanteAPP.Migrations
+namespace Vacante.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
     [Migration("20230620071937_AddCategoryTable")]

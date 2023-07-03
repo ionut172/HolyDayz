@@ -1,0 +1,44 @@
+﻿@page
+@model VacanteAPP_Razor.Pages.Categories.IndexModel
+
+<partial name="_Notification" />
+<div class="containter">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2>Lista de categorii</h2>
+        </div>
+
+        <div class="col-6">
+            <button type="button" class="btn btn-primary"> <a asp-page="/categories/create" class="text-light">Realizeaza o noua categorie </a></button>
+        </div>
+    </div>
+
+
+    <table class="table table-bordered table-striped">
+        <thead>
+
+
+            <tr>
+                <th>Category Name</th>
+                <th>Display Order</th>
+                <th>Actiuni</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model.CategoryList.OrderBy(u => u.DisplayOrder))
+            {
+
+                <tr>
+                    <td>@obj.Name</td>
+                    <td>@obj.DisplayOrder</td>
+                    <td>
+                        <button type="button" class="btn btn-danger"> <a asp-page="/Categories/Delete" asp-route-CategoryId="@obj.CategoryId" class="text-light">Sterge</a></button>
+                        <button type="button" class="btn btn-secondary"> <a asp-page="/Categories/Edit" asp-route-CategoryId="@obj.CategoryId" class="text-light">Editeaza</a></button>
+                    </td>
+
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>

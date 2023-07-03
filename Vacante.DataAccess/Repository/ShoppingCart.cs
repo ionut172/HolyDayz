@@ -8,23 +8,22 @@ using VacanteAPP.Models.ViewModels;
 
 namespace Vacante.DataAccess.Repository
 {
-    public class VacanteStandard : Repository<VacanteAPP.Models.VacanteStandard>, IVacanteStandardRepository
+    public class ShoppingCart : Repository<VacanteAPP.Models.ShoppingCart>, IShoppingCartRepository
     {
 
         protected ApplicationDBContext _db;
-        public VacanteStandard(ApplicationDBContext db) : base(db)
+        public ShoppingCart(ApplicationDBContext db) : base(db)
         {
             this._db = db;
         }
-        public void Update(VacanteAPP.Models.VacanteStandard vacanteStandard)
+        public void Update(ShoppingCart obj)
         {
-            _db.Update(vacanteStandard);
+            _db.Update(obj);
         }
 
-        public void Update(VacanteStandardVM obj)
+        public void Update(VacanteAPP.Models.ShoppingCart shoppingCart)
         {
-            _db.Update(obj.vacanteStandard);
-
+            _db.shoppingCarts.Update(shoppingCart);
         }
     }
 }

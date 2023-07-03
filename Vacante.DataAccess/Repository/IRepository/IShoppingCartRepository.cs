@@ -8,6 +8,7 @@ namespace Vacante.DataAccess.Repository.IRepository
     {
 
         void Update(ShoppingCart obj);
+        void Update(VacanteAPP.Models.ShoppingCart shoppingCart);
     }
 }
 

@@ -1,0 +1,67 @@
+﻿@model VacanteAPP.Models.ViewModels.VacanteStandardVM
+
+<partial name="_Notificare" />
+
+@if (Model != null)
+{
+    <div class="container">
+        <div class="row pt-4">
+            <div class="col-6">
+                <h2>Lista de Vacante Standard</h2>
+            </div>
+            <div class="col-6">
+                <button type="button" class="btn btn-primary">
+                    <a asp-controller="VacanteStandard" asp-action="Create" class="text-light">Realizeaza o noua Vacanta</a>
+                </button>
+            </div>
+        </div>
+
+        <table id="tableData" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>ID vacanta</th>
+                    <th>Nume vacanta</th>
+                    <th>Display Order</th>
+                    <th>Data</th>
+                    <th>Oras</th>
+                    <th>Pret</th>
+                    <th>Descriere</th>
+                    <th>ID Tara</th>
+                    <th>Imagine URL</th>
+                    <th>Actiuni</th>
+                </tr>
+            </thead>
+            @*<tbody>
+                    @foreach (var obj in Model.vacanteStandards)
+                    {
+                        <tr>
+                            <td>@obj.NameLastMinute</td>
+                            <td>@obj.DisplayOrder</td>
+                            <td>@obj.LastMinuteDate</td>
+                            <td>@obj.Oras</td>
+                            <td>@obj.Pret</td>
+                            <td>@obj.Descriere</td>
+                            <td>@obj.CountryId</td>
+                            <td>@obj.URL</td>
+                            <td>
+                                <button type="button" class="btn btn-danger mt-2 mb-2">
+                                    <a asp-controller="VacanteStandard" asp-route-VacantaId="@obj.VacantaId" asp-action="Delete" class="text-light">Sterge</a>
+                                </button>
+                                <button type="button" class="btn btn-secondary mt-2 mb-2">
+                                    <a asp-controller="VacanteStandard" asp-route-VacantaId="@obj.VacantaId" asp-action="Edit" class="text-light">Editeaza</a>
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>*@
+        </table>
+    </div>
+}
+else
+{
+    <p>Nu există date disponibile.</p>
+}
+
+@section Scripts {
+    <script src="~/js/vacantaStandard.js"></script>
+}
