@@ -1,0 +1,59 @@
+﻿@model OrderVM
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Shipping Information</h3>
+            <input asp-for="@Model.orderHeader.ApplicationUserId" hidden />
+            <form method="post">
+                <div class="form-group">
+                    <label asp-for="@Model.orderHeader.Name">Nume</label>
+                    <input asp-for="@Model.orderHeader.Name" type="text" class="form-control" id="name" placeholder="Enter your name" value="@Model.orderHeader.Name">
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.orderHeader.Telefon">Telefon</label>
+                    <input asp-for="@Model.orderHeader.Telefon" type="text" class="form-control" id="phone" placeholder="Enter your phone number" value="@Model.orderHeader.Telefon">
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.orderHeader.Adresa" for="address">Adresa livrare</label>
+                    <input asp-for="@Model.orderHeader.Adresa" type="text" class="form-control" id="address" placeholder="Enter your street address" value="@Model.orderHeader.Adresa">
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.orderHeader.City">Oras</label>
+                    <input asp-for="@Model.orderHeader.City" type="text" class="form-control" id="city" placeholder="Enter your city" value="@Model.orderHeader.City">
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.orderHeader.State" for="country">Tara</label>
+                    <input asp-for="@Model.orderHeader.State" type="text" class="form-control" id="country" placeholder="Enter your country" value="@Model.orderHeader.State">
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.orderHeader.CodPostal" for="postal-code">Cod Postal</label>
+                    <input asp-for="@Model.orderHeader.CodPostal" type="text" class="form-control" id="postal-code" placeholder="Enter your postal code" value="@Model.orderHeader.CodPostal">
+                </div>
+                <label asp-for="@Model.orderHeader.OrderStatus" for="order-status">Status comanda</label>
+                <select asp-for="@Model.orderHeader.OrderStatus" asp-items="@Model.OrderStatusList" class="form-control" id="order-status"></select>
+
+                <div class="form-group">
+                    <label asp-for="@Model.orderHeader.OrderDate" for="postal-code">Comanda data</label>
+                    <input asp-for="@Model.orderHeader.OrderDate" type="text" class="form-control" id="postal-code" placeholder="Enter your postal code" value="@Model.orderHeader.OrderDate">
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.orderHeader.TrackingNumber" for="postal-code">AWB</label>
+                    <input asp-for="@Model.orderHeader.TrackingNumber" type="text" class="form-control" id="postal-code" placeholder="Enter your postal code" value="@Model.orderHeader.TrackingNumber">
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.orderHeader.Carrier" for="postal-code">Curier Firma</label>
+                    <input asp-for="@Model.orderHeader.Carrier" type="text" class="form-control" id="postal-code" placeholder="Enter your postal code" value="@Model.orderHeader.Carrier">
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.orderHeader.ShippingDate" for="postal-code">Livrare Aproximativa Data</label>
+                    <input asp-for="@Model.orderHeader.ShippingDate" type="text" class="form-control" id="postal-code" placeholder="Enter your postal code" value="@Model.orderHeader.ShippingDate">
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.orderHeader.ApplicationUserId" for="postal-code">User ID</label>
+                    <input asp-for="@Model.orderHeader.ApplicationUserId" type="text" class="form-control" id="postal-code" placeholder="Enter your postal code" value="@Model.orderHeader.ApplicationUserId">
+                </div>
+                <button type="submit" class="btn btn-primary mt-4">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

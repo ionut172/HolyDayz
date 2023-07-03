@@ -1,0 +1,49 @@
+﻿@model List<LastMinute>
+    <partial name="_Notificare" />
+    <div class="containter">
+        <div class="row pt-4">
+            <div class="col-6">
+                <h2>Lista de Vacante Last Minute</h2>
+            </div>
+            <div class="col-6">
+                <button type="button" class="btn btn-primary"> <a asp-controller="LastMinute" asp-action="Create" class="text-light">Realizeaza o noua Vacanta </a></button>
+            </div>
+        </div>
+
+
+        <table class="table table-bordered table-striped">
+            <thead>
+
+
+                <tr>
+                    <th>Nume vacanta</th>
+                    <th>Display Order</th>
+                    <th>Data</th>
+                    <th>Oras</th>
+                    <th>Pret</th>
+                    <th>Descriere</th>
+                    <th>Actiuni</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var obj in Model.OrderBy(u => u.DisplayOrder))
+                {
+
+                    <tr>
+                        <td>@obj.NameLastMinute</td>
+                        <td>@obj.DisplayOrder</td>
+                        <td>@obj.LastMinuteDate</td>
+                        <td>@obj.Oras</td>
+                        <td>@obj.Pret</td>
+                        <td>@obj.Descriere</td>
+                        <td>
+                            <button type="button" class="btn btn-danger"> <a asp-controller="LastMinute" asp-route-LastMinuteId="@obj.LastMinuteId" asp-action="Delete" class="text-light">Sterge</a></button>
+                            <button type="button" class="btn btn-secondary"> <a asp-controller="LastMinute" asp-route-LastMinuteId="@obj.LastMinuteId" asp-action="Edit" class="text-light">Editeaza</a></button>
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
